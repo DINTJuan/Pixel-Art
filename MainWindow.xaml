@@ -1,0 +1,36 @@
+﻿<Window x:Class="Pixel_Art.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pixel_Art"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="347" Margin="172,42,0,0" VerticalAlignment="Top" Width="422"/>
+        <GroupBox Header="Nuevo" HorizontalAlignment="Left" Height="161" Margin="10,58,0,0" VerticalAlignment="Top" Width="100" BorderBrush="Black">
+            <StackPanel Margin="5">
+                <Button Content="Pequeño" Margin="10" Tag="10" Click="Button_Click"/>
+                <Button Content="Mediano" Margin="10" Tag="20" Click="Button_Click"/>
+                <Button Content="Grande" Margin="10" Tag="30" Click="Button_Click"/>
+            </StackPanel>
+
+        </GroupBox>
+        <GroupBox Header="Colores" HorizontalAlignment="Left" Height="293" Margin="644,70,0,0" VerticalAlignment="Top" Width="138" BorderBrush="#FF070808">
+            <StackPanel Margin="5">
+                <RadioButton Content="Negro" Margin="5"/>
+                <RadioButton Content="Blanco" Margin="5" Checked="RadioButton_Checked"/>
+                <RadioButton Content="Rojo" Margin="5"/>
+                <RadioButton Content="Verde" Margin="5"/>
+                <RadioButton Content="Azul" Margin="5"/>
+                <RadioButton Content="Amarillo" Margin="5"/>
+                <RadioButton Content="Naranja" Margin="5"/>
+                <RadioButton Content="Rosa" Margin="5"/>
+                <RadioButton Content="Personalizado" Margin="5"/>
+                <TextBlock TextWrapping="Wrap" Height="37"/>
+
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</Window>
