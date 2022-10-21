@@ -22,9 +22,11 @@ namespace Pixel_Art
     public partial class MainWindow : Window
     {
         private SolidColorBrush colorMarcado;
+        private bool comprobarHecho = false;
         public MainWindow()
         {
             InitializeComponent();
+            NegroRadioButton.IsChecked = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,6 +62,7 @@ namespace Pixel_Art
             {
                 SolidColorBrush color = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#" + colortext));
                 colorMarcado = color;
+                ColorMosTextBlock.Background = colorMarcado;
             }
         }
 
@@ -67,6 +70,22 @@ namespace Pixel_Art
         {
             Border borde = sender as Border;
             borde.Background = colorMarcado;
+            comprobarHecho = true;
+        }
+
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Border border = sender as Border;
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                border.Background = colorMarcado;
+            }
+            
+        }
+
+        private void ColorTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+          PerRadioButton.Tag = ColorTextBox.Text;
         }
     }
 }
