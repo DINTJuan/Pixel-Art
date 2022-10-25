@@ -23,6 +23,7 @@ namespace Pixel_Art
     {
         private SolidColorBrush colorMarcado;
         private bool comprobarHecho = false;
+        private int TamañoPlantilla = default;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,38 +32,40 @@ namespace Pixel_Art
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            object preguntaResultado;
+            MessageBoxResult preguntaResultado = MessageBoxResult.No;
             if (comprobarHecho)
             {
                 preguntaResultado = MessageBox.Show("Esta seguro de crear otra plantilla", "Atencion",MessageBoxButton.YesNo, MessageBoxImage.Question);
             }
-            if(preguntaResultado == MessageBoxResult.Yes)
+            if(preguntaResultado == MessageBoxResult.Yes || !comprobarHecho)
             {
-
-            }
-
-            DibujoGrid.RowDefinitions.Clear();
-            DibujoGrid.ColumnDefinitions.Clear();
-            DibujoGrid.Children.Clear();
-            int tamaño = int.Parse((string)(sender as Button).Tag);
-            for(int i = 1; i < tamaño; i++)
-            {
-                DibujoGrid.RowDefinitions.Add(new RowDefinition());
-                DibujoGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            
-            for (int i = 1; i < tamaño; i++)
-            {
-                for (int j = 1; j < tamaño; j++)
+                DibujoGrid.RowDefinitions.Clear();
+                DibujoGrid.ColumnDefinitions.Clear();
+                DibujoGrid.Children.Clear();
+                int tamaño = int.Parse((string)(sender as Button).Tag);
+                TamañoPlantilla = tamaño;
+                for (int i = 1; i < tamaño; i++)
                 {
-                    Border a = new Border();
-                    a.Style = (Style)this.Resources["Dibujo"];
-                    Grid.SetColumn(a, i);
-                    Grid.SetRow(a, j);
-                    DibujoGrid.Children.Add(a);
+                    DibujoGrid.RowDefinitions.Add(new RowDefinition());
+                    DibujoGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 }
+
+                for (int i = 1; i < tamaño; i++)
+                {
+                    for (int j = 1; j < tamaño; j++)
+                    {
+                        Border a = new Border();
+                        a.Style = (Style)this.Resources["Dibujo"];
+                        Grid.SetColumn(a, i);
+                        Grid.SetRow(a, j);
+                        DibujoGrid.Children.Add(a);
+                    }
+                }
+                RellenarButton.IsEnabled = true;
+                comprobarHecho = false;
             }
-            comprobarHecho = false;
+
+            
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -98,6 +101,24 @@ namespace Pixel_Art
         private void ColorTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
           PerRadioButton.Tag = ColorTextBox.Text;
+        }
+
+        private void RellenarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DibujoGrid.Children.Clear();
+            for (int i = 1; i < TamañoPlantilla; i++)
+            {
+                for (int j = 1; j < TamañoPlantilla; j++)
+                {
+                    Border a = new Border();
+                    a.Style = (Style)this.Resources["Dibujo"];
+                    a.Background = colorMarcado;
+                    Grid.SetColumn(a, i);
+                    Grid.SetRow(a, j);
+                    DibujoGrid.Children.Add(a);
+                }
+            }
+            comprobarHecho = true;
         }
     }
 }
