@@ -31,6 +31,16 @@ namespace Pixel_Art
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            object preguntaResultado;
+            if (comprobarHecho)
+            {
+                preguntaResultado = MessageBox.Show("Esta seguro de crear otra plantilla", "Atencion",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            }
+            if(preguntaResultado == MessageBoxResult.Yes)
+            {
+
+            }
+
             DibujoGrid.RowDefinitions.Clear();
             DibujoGrid.ColumnDefinitions.Clear();
             DibujoGrid.Children.Clear();
@@ -52,6 +62,7 @@ namespace Pixel_Art
                     DibujoGrid.Children.Add(a);
                 }
             }
+            comprobarHecho = false;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -79,6 +90,7 @@ namespace Pixel_Art
             if(e.LeftButton == MouseButtonState.Pressed)
             {
                 border.Background = colorMarcado;
+                comprobarHecho = true;
             }
             
         }
