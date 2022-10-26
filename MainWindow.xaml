@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pixel_Art"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinWidth="850" MinHeight="500">
     <Window.Resources>
         <Style TargetType="{x:Type Border}" x:Key="Dibujo">
             <Setter Property="CornerRadius" Value="1"/>
@@ -15,18 +15,27 @@
             <EventSetter Event="MouseLeftButtonDown" Handler="Border_MouseLeftButtonDown"/>
             <EventSetter Event="MouseEnter" Handler="Border_MouseEnter"/>
         </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="58"/>
+        </Style>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="DibujoGrid" HorizontalAlignment="Left" Height="347" Margin="172,42,0,0" VerticalAlignment="Top" Width="422"/>
-        <GroupBox Header="Nuevo" HorizontalAlignment="Left" Height="161" Margin="10,58,0,0" VerticalAlignment="Top" Width="100" BorderBrush="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="DibujoGrid" Grid.Column="1" Height="347" Margin="10,44,10,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Nuevo" Grid.Column="0" Height="161" Margin="10,58,0,0" VerticalAlignment="Top" Width="100" BorderBrush="Black">
             <StackPanel Margin="5">
-                <Button Content="Pequeño" Margin="10" Tag="10" Click="Button_Click"/>
-                <Button Content="Mediano" Margin="10" Tag="20" Click="Button_Click"/>
-                <Button Content="Grande" Margin="10" Tag="30" Click="Button_Click"/>
+                <Button Content="Pequeño" Tag="10" Click="Button_Click"/>
+                <Button Content="Mediano" Tag="20" Click="Button_Click"/>
+                <Button Content="Grande" Tag="30" Click="Button_Click"/>
             </StackPanel>
 
         </GroupBox>
-        <GroupBox Header="Colores" HorizontalAlignment="Left" Height="293" Margin="644,70,0,0" VerticalAlignment="Top" Width="138" BorderBrush="#FF070808">
+        <GroupBox Header="Colores" Height="293" Margin="30,70,30,0" VerticalAlignment="Top" Width="138" BorderBrush="#FF070808" Grid.Column="2">
             <StackPanel Margin="5">
                 <RadioButton x:Name="NegroRadioButton" Content="Negro" Margin="5" Tag="000000" Checked="RadioButton_Checked"/>
                 <RadioButton Content="Blanco" Margin="5" Tag="FFFFFF" Checked="RadioButton_Checked"/>
@@ -36,12 +45,11 @@
                 <RadioButton Content="Amarillo" Margin="5" Tag="DBE114" Checked="RadioButton_Checked"/>
                 <RadioButton Content="Naranja" Margin="5" Tag="E1730D" Checked="RadioButton_Checked"/>
                 <RadioButton Content="Rosa" Margin="5" Tag="E10DC1" Checked="RadioButton_Checked"/>
-                <RadioButton x:Name="PerRadioButton" Content="Personalizado" Margin="5" Checked="RadioButton_Checked"/>
+                <RadioButton x:Name="PerRadioButton" Tag="FFFFFF" Content="Personalizado" Margin="5" Checked="RadioButton_Checked"/>
                 <TextBox x:Name="ColorTextBox" HorizontalAlignment="Left" Height="23" Margin="0,0,-4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="ColorTextBox_TextChanged"/>
             </StackPanel>
         </GroupBox>
-        <TextBlock x:Name="ColorMosTextBlock" TextWrapping="Wrap" Height="37" Margin="644,368,10,14"/>
-        <Button x:Name="RellenarButton" Content="Rellenar" HorizontalAlignment="Left" Margin="22,249,0,0" VerticalAlignment="Top" Width="75" Click="RellenarButton_Click" IsEnabled="False"/>
-
+        <TextBlock x:Name="ColorMosTextBlock" Grid.Column="2" TextWrapping="Wrap" Height="37" Margin="30,368,30,14" />
+        <Button x:Name="RellenarButton" Grid.Column="0" Content="Rellenar" Margin="74,250,66,0" VerticalAlignment="Top" Click="RellenarButton_Click" IsEnabled="False"/>
     </Grid>
 </Window>
