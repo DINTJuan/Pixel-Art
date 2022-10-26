@@ -19,6 +19,10 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Width" Value="58"/>
         </Style>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="5"/>
+            <EventSetter Event="Checked" Handler="RadioButton_Checked"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -38,14 +42,14 @@
         <GroupBox Header="Colores" Height="293" Margin="30,70,30,0" VerticalAlignment="Top" Width="138" BorderBrush="#FF070808" Grid.Column="2">
             <StackPanel Margin="5">
                 <RadioButton x:Name="NegroRadioButton" Content="Negro" Margin="5" Tag="000000" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Blanco" Margin="5" Tag="FFFFFF" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Rojo" Margin="5" Tag="E51E1E" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Verde" Margin="5" Tag="4FCB19" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Azul" Margin="5" Tag="135FBF" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Amarillo" Margin="5" Tag="DBE114" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Naranja" Margin="5" Tag="E1730D" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Rosa" Margin="5" Tag="E10DC1" Checked="RadioButton_Checked"/>
-                <RadioButton x:Name="PerRadioButton" Tag="FFFFFF" Content="Personalizado" Margin="5" Checked="RadioButton_Checked"/>
+                <RadioButton Content="Blanco" Tag="FFFFFF"/>
+                <RadioButton Content="Rojo" Tag="E51E1E" />
+                <RadioButton Content="Verde" Tag="4FCB19"/>
+                <RadioButton Content="Azul" Tag="135FBF"/>
+                <RadioButton Content="Amarillo" Tag="DBE114"/>
+                <RadioButton Content="Naranja" Tag="E1730D"/>
+                <RadioButton Content="Rosa" Tag="E10DC1"/>
+                <RadioButton x:Name="PerRadioButton" Tag="FFFFFF" Content="Personalizado"/>
                 <TextBox x:Name="ColorTextBox" HorizontalAlignment="Left" Height="23" Margin="0,0,-4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="ColorTextBox_TextChanged"/>
             </StackPanel>
         </GroupBox>
